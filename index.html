@@ -2,39 +2,522 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Moaaz Hamid | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maaz Hamid | Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+    <style>
+      :root {
+        --primary-color: black;
+        --secondary-color: red;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: black;
+        --text-color: #333;
+        --text-light: #7f8c8d;
+        --border-radius: 8px;
+        --transition: all 0.3s ease;
+        --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: #fff;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        background-color: var(--light-color);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      nav ul {
+        display: flex;
+      }
+
+      nav ul li {
+        margin-left: 2rem;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--secondary-color);
+        transition: var(--transition);
+      }
+
+      nav ul li a:hover::after,
+      nav ul li a.active::after {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 5rem 0;
+        background-color: var(--light-color);
+      }
+
+      .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+
+      .hero-text {
+        flex: 1;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero-text h1 span {
+        color: var(--secondary-color);
+      }
+
+      .hero-text h2 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-text p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .profile-image {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--border-radius);
+        font-weight: 500;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .btn.primary {
+        background-color: var(--secondary-color);
+        color: #fff;
+      }
+
+      .btn.primary:hover {
+        background-color: var(--accent-color);
+      }
+
+      .btn.secondary {
+        background-color: transparent;
+        border: 2px solid var(--secondary-color);
+        color: var(--secondary-color);
+      }
+
+      .btn.secondary:hover {
+        background-color: var(--secondary-color);
+        color: #fff;
+      }
+
+      /* Bio Section */
+      .bio {
+        padding: 5rem 0;
+      }
+
+      .bio-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .bio-content p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      /* Highlights Section */
+      .highlights {
+        padding: 5rem 0;
+        background-color: var(--light-color);
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .card {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .card h3 {
+        margin-bottom: 1rem;
+      }
+
+      /* Digital Identity Section */
+      .digital-identity {
+        padding: 5rem 0;
+      }
+
+      .reflection {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: var(--light-color);
+        border-radius: var(--border-radius);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: #fff;
+        padding: 3rem 0 1.5rem;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-logo h2 {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-links h3 {
+        margin-bottom: 1rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        color: #fff;
+        padding: 0.5rem 1rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+      }
+
+      .social-link:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .hero-content {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+
+        .hero-text {
+          margin-top: 2rem;
+        }
+
+        .cta-buttons {
+          justify-content: center;
+        }
+
+        .section-title::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .logo {
+          width: 40px;
+          height: 40px;
+          font-size: 1.5rem;
+        }
+
+        nav ul li {
+          margin-left: 1rem;
+        }
+
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+
+        .hero-text h2 {
+          font-size: 1.2rem;
+        }
+
+        .profile-image {
+          width: 250px;
+          height: 250px;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="navbar">
-      <a href="index.html" class="logo">Moaaz's Portfolio</a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="hobbies.html">Hobbies</a></li>
-          <li><a href="about.html">About Me</a></li>
-          <li><a href="labs.html">Labs Summary</a></li>
-          <li><a href="store.html">Store Links</a></li>
-        </ul>
-      </nav>
+    <header>
+      <div class="container">
+        <h1 class="logo">MH</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="labs.html">Labs</a></li>
+            <li><a href="store.html">Store</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <main class="hero">
-      <div class="hero-text">
-        <h1>Hello, I'm Moaaz Hamid👋</h1>
-        <p>
-          I’m a BBA student at COMSATS, currently exploring opportunities to
-          learn and grow in the field of business and management.
-        </p>
-        <a href="hobbies.html" class="btn">View My Hobbies</a>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Hello, I'm <span>Maaz Hamid</span></h1>
+            <h2>BBA Student at COMSATS</h2>
+            <p>
+              Passionate about business analytics, marketing strategies, and
+              entrepreneurship.
+            </p>
+            <div class="cta-buttons">
+              <a href="about.html" class="btn primary">About Me</a>
+              <a href="labs.html" class="btn secondary">My Work</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="profile-image">
+              <img src="pfpic.jpeg" alt="Maaz Hamid" />
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="hero-img">
-        <img src="maaz.png" alt="Moaaz Hamid" />
+    </section>
+
+    <section class="bio">
+      <div class="container">
+        <h2 class="section-title">My Journey</h2>
+        <div class="bio-content">
+          <p>
+            I'm a BBA student at COMSATS University since 2022, focusing on
+            developing my skills in business management, finance, and marketing.
+            With a keen interest in digital marketing and data analytics, I
+            strive to combine traditional business knowledge with modern
+            technological approaches.
+          </p>
+          <p>
+            Throughout my academic journey, I've participated in various
+            business competitions, workshops, and internships that have shaped
+            my professional outlook and enhanced my practical skills.
+          </p>
+        </div>
       </div>
-    </main>
+    </section>
+
+    <section class="highlights">
+      <div class="container">
+        <h2 class="section-title">Highlights</h2>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>Education</h3>
+            <p>BBA at COMSATS University (2022-Present)</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🏆</div>
+            <h3>Achievements</h3>
+            <p>Securing high grades, participating in debate competitions</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">💼</div>
+            <h3>Experience</h3>
+            <p>Marketing Intern, Student Business Society Member</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="digital-identity">
+      <div class="container">
+        <h2 class="section-title">Digital Identity Reflection</h2>
+        <div class="reflection">
+          <p>
+            This portfolio website serves as a digital extension of my
+            professional identity, showcasing not just my academic achievements
+            but also my personal brand. Through thoughtful design choices and
+            content curation, I've created a space that reflects my business
+            acumen and professional aspirations. The clean aesthetic mirrors my
+            organized approach to work, while the content highlights my journey
+            as a business student. This digital presence allows me to connect
+            with potential employers, collaborators, and peers in a meaningful
+            way, demonstrating both my technical adaptability and
+            business-focused mindset.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <p>© 2025 Moaaz Hamid | Connect on <a href="#">Facebook</a></p>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Maaz Hamid</h2>
+            <p>BBA Student | COMSATS University</p>
+          </div>
+          <div class="footer-links">
+            <h3>Connect With Me</h3>
+            <div class="social-links">
+              <a href="mailto:Maazhamid59@gmail.com" class="social-link"
+                >Email</a
+              >
+              <a
+                href="https://www.instagram.com/_maaz_hamid_?igsh=YmVvZWtwcnkxOGVk"
+                class="social-link"
+                >Instagram</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

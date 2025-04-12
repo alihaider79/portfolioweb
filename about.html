@@ -2,36 +2,503 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>About Me | Moaaz Hamid</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me | Maaz Hamid</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+    <style>
+      :root {
+        --primary-color: black;
+        --secondary-color: red;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: black;
+        --text-color: #333;
+        --text-light: #7f8c8d;
+        --border-radius: 8px;
+        --transition: all 0.3s ease;
+        --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: #fff;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+
+      /* Header Styles */
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+        background-color: var(--light-color);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      nav ul {
+        display: flex;
+      }
+
+      nav ul li {
+        margin-left: 2rem;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--secondary-color);
+        transition: var(--transition);
+      }
+
+      nav ul li a:hover::after,
+      nav ul li a.active::after {
+        width: 100%;
+      }
+
+      /* Page Header */
+      .page-header {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 3rem 0;
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+
+      /* About Content */
+      .about-content {
+        padding: 5rem 0;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text p {
+        margin-bottom: 1rem;
+      }
+
+      .about-image {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      /* Education Timeline */
+      .education {
+        padding: 5rem 0;
+        background-color: var(--light-color);
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background-color: var(--secondary-color);
+        top: 0;
+        bottom: 0;
+        left: 20px;
+      }
+
+      .timeline-item {
+        padding: 0 0 2rem 50px;
+        position: relative;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: var(--secondary-color);
+        border-radius: 50%;
+        left: 11px;
+        top: 15px;
+        z-index: 1;
+      }
+
+      .timeline-content {
+        background-color: #fff;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+      }
+
+      .timeline-content h3 {
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content h4 {
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-date {
+        font-style: italic;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+      }
+
+      /* Skills Section */
+      .skills {
+        padding: 5rem 0;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-category h3 {
+        margin-bottom: 1rem;
+        color: var(--secondary-color);
+      }
+
+      .skill-list li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .skill-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--secondary-color);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: #fff;
+        padding: 3rem 0 1.5rem;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-logo h2 {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-links h3 {
+        margin-bottom: 1rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        color: #fff;
+        padding: 0.5rem 1rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius);
+      }
+
+      .social-link:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-image {
+          max-width: 400px;
+          margin: 0 auto;
+        }
+
+        .section-title::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        .timeline::before {
+          left: 10px;
+        }
+
+        .timeline-dot {
+          width: 15px;
+          height: 15px;
+          left: 3.5px;
+        }
+
+        .timeline-item {
+          padding-left: 30px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .logo {
+          width: 40px;
+          height: 40px;
+          font-size: 1.5rem;
+        }
+
+        nav ul li {
+          margin-left: 1rem;
+        }
+
+        .page-header h1 {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="navbar">
-      <a href="index.html" class="logo">Moaaz's Portfolio</a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="hobbies.html">Hobbies</a></li>
-          <li><a href="about.html">About Me</a></li>
-          <li><a href="labs.html">Labs Summary</a></li>
-          <li><a href="store.html">Store Links</a></li>
-        </ul>
-      </nav>
+    <header>
+      <div class="container">
+        <h1 class="logo">MH</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="labs.html">Labs</a></li>
+            <li><a href="store.html">Store</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
+    <section class="about-content">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image">
+            <img src="pfpic.jpeg" alt="Maaz Hamid" />
+          </div>
+          <div class="about-text">
+            <h2>Who I Am</h2>
+            <p>
+              I'm Maaz Hamid, a dedicated BBA student at COMSATS University
+              since 2022. My academic journey has been focused on developing a
+              strong foundation in business principles while exploring
+              specialized areas like marketing analytics and entrepreneurship.
+            </p>
+            <p>
+              Born and raised in Pakistan, I've always been fascinated by how
+              businesses operate and create value. This curiosity led me to
+              pursue a Bachelor's in Business Administration, where I've
+              maintained a strong academic record while participating in
+              extracurricular activities.
+            </p>
+            <p>
+              Outside of academics, I enjoy reading business case studies,
+              following market trends, and participating in business simulation
+              competitions. I believe in continuous learning and regularly take
+              online courses to expand my skill set.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <main class="hobbies-section">
-      <h1 class="section-title">👤 About Me</h1>
-      <p>
-        I’m a BBA student at COMSATS University, passionate about understanding
-        the dynamics of business, entrepreneurship, and strategic management.
-        With a strong interest in marketing, finance, and leadership, I’m always
-        looking for opportunities to enhance my skills and gain practical
-        experience. I believe in continuous learning and personal growth, and
-        I'm eager to contribute to real-world business challenges while building
-        a solid foundation for my career. Whether it's through academic
-        projects, internships, or self-driven learning, I strive to stay
-        curious, motivated, and ready to take on new challenges
-      </p>
-    </main>
+    <section class="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Bachelor of Business Administration</h3>
+              <h4>COMSATS University</h4>
+              <p class="timeline-date">2022 - Present</p>
+              <p>
+                Specializing in Marketing and Finance with a CGPA of 3.7/4.0
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Higher Secondary Education</h3>
+              <h4>City College</h4>
+              <p class="timeline-date">2020 - 2022</p>
+              <p>Pre-Engineering as an elective</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Business Skills</h3>
+            <ul class="skill-list">
+              <li>Market Research</li>
+              <li>Financial Analysis</li>
+              <li>Business Strategy</li>
+              <li>Project Management</li>
+              <li>Marketing Planning</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Technical Skills</h3>
+            <ul class="skill-list">
+              <li>MS Office Suite</li>
+              <li>Basic Data Analysis</li>
+              <li>Social Media Management</li>
+              <li>Business Software Tools</li>
+              <li>Basic Web Development</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3>Soft Skills</h3>
+            <ul class="skill-list">
+              <li>Team Leadership</li>
+              <li>Public Speaking</li>
+              <li>Critical Thinking</li>
+              <li>Problem Solving</li>
+              <li>Time Management</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Maaz Hamid</h2>
+            <p>BBA Student | COMSATS University</p>
+          </div>
+          <div class="footer-links">
+            <h3>Connect With Me</h3>
+            <div class="social-links">
+              <a href="mailto:Maazhamid59@gmail.com" class="social-link"
+                >Email</a
+              >
+              <a href="https://www.instagram.com/_maaz_hamid_?igsh=YmVvZWtwcnkxOGVk" class="social-link">Instagram</a>
+            </div>
+          </div>
+      </div>
+    </footer>
   </body>
 </html>
